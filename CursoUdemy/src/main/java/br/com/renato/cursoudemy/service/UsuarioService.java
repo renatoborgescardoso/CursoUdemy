@@ -25,4 +25,12 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public void deletar(String id) {
+        usuarioRepository.delete(id);
+    }
+    
+    public Usuario consultarUsuario(String id) {
+        return usuarioRepository.findOne(id);
+    }
+
 }
