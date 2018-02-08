@@ -44,9 +44,14 @@ public class UsuarioController {
         return "Usuário excluido com sucesso.";
     }
 
-    @RequestMapping(value = "/usuario/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/usuario/{id}", method = RequestMethod.GET)
     public Usuario consultarUsuario(@PathVariable String id) {
         return usuarioService.consultarUsuario(id);
+    }
+    
+    @RequestMapping(value = "/usuario/{page}/{size}", method = RequestMethod.GET)
+    public List<Usuario> consultaPaginada(@PathVariable int page, @PathVariable int size) {
+        return usuarioService.consultaPaginada(size, page);
     }
 
 }

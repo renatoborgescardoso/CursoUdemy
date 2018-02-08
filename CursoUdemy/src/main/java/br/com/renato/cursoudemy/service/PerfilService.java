@@ -1,6 +1,8 @@
 package br.com.renato.cursoudemy.service;
 
+import br.com.renato.cursoudemy.entity.Perfil;
 import br.com.renato.cursoudemy.entity.Usuario;
+import br.com.renato.cursoudemy.repository.PerfilRepository;
 import br.com.renato.cursoudemy.repository.UsuarioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,30 +16,30 @@ import org.springframework.stereotype.Service;
  * @author Renato
  */
 @Service
-public class UsuarioService {
+public class PerfilService {
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    PerfilRepository perfilRepository;
 
-    public void salvar(Usuario usuario) {
-        usuarioRepository.save(usuario);
+    public void salvar(Perfil perfil) {
+        perfilRepository.save(perfil);
     }
 
-    public List<Usuario> listaUsuario() {
-        return usuarioRepository.findAll();
+    public List<Perfil> listaPerfil() {
+        return perfilRepository.findAll();
     }
 
     public void deletar(String id) {
-        usuarioRepository.delete(id);
+        perfilRepository.delete(id);
     }
     
-    public Usuario consultarUsuario(String id) {
-        return usuarioRepository.findOne(id);
+    public Perfil consultarPerfil(String id) {
+        return perfilRepository.findOne(id);
     }
     
-    public List<Usuario> consultaPaginada(int size, int page) {
+    public List<Perfil> consultaPaginada(int size, int page) {
         Pageable pages = new PageRequest(page, size);
-        return (List<Usuario>) usuarioRepository.findAll(pages);
+        return (List<Perfil>) perfilRepository.findAll(pages);
     }
 
 }
